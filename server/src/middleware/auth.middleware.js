@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
 
-export const protectRoute = async (req, res) => {
+export const protectRoute = async (req, res, next) => {
     try{
         const token = req.cookies.jwt;
 
@@ -15,7 +15,7 @@ export const protectRoute = async (req, res) => {
             return res.status(401).json({message: "Unauthorized-token is invalid"});
         }
 
-        const user = await User.findById(decoded.UserId).select("-password");
+        const user = await User.findById(decoded.userId).select("-password");
 
         if(!user){
             return res.status(401).json({message: "Unauthorized-user not found"});
@@ -23,7 +23,7 @@ export const protectRoute = async (req, res) => {
 
         req.user = user;
 
-        next()
+        next();
 
     } catch (error) {
         console.log("Error in Auth Middlerware", error);
