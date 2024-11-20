@@ -96,7 +96,7 @@ export const updateProfile = async (req, res) => {
             return res.status(400).json({ message: "Please add a profile picture" });
         }
 
-        const uploadResponse = await cloudinary. uploader.upload(profilePic, {
+        const uploadResponse = await cloudinary.uploader.upload(profilePic, {
             folder: "chat",
             resource_type: "image",
         })
