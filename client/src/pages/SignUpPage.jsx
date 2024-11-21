@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
 import { Link } from "react-router-dom";
-
 import AuthImagePattern from "../components/AuthImagePattern";
+import ParticlesComponent from "./ParticlesComponent"; // Import the Particles component
 import toast from "react-hot-toast";
 
 const SignUpPage = () => {
@@ -35,11 +35,11 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2">
-      {/* left side */}
-      <div className="flex flex-col justify-center items-center p-6 sm:p-12">
+    <div className="min-h-screen grid lg:grid-cols -2 relative">
+      <ParticlesComponent id="tsparticles" /> {/* Add the Particles component here */}
+      <div className="flex flex-col justify-center items-center p-6 sm:p-12 z-10"> {/* Added z-index for visibility */}
         <div className="w-full max-w-md space-y-8">
-          {/* LOGO */}
+          {/* Logo */}
           <div className="text-center mb-8">
             <div className="flex flex-col items-center gap-2 group">
               <div
@@ -60,7 +60,7 @@ const SignUpPage = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="size-5 text-base-content/40" />
+                  <User  className="size-5 text-base-content/40" />
                 </div>
                 <input
                   type="text"
@@ -101,7 +101,7 @@ const SignUpPage = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   className={`input input-bordered w-full pl-10`}
-                  placeholder="••••••••"
+                  placeholder="********"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />
@@ -110,45 +110,31 @@ const SignUpPage = () => {
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? (
-                    <EyeOff className="size-5 text-base-content/40" />
-                  ) : (
-                    <Eye className="size-5 text-base-content/40" />
-                  )}
+                  {showPassword ? <EyeOff className="size-5 text-base-content/40" /> : <Eye className="size-5 text-base-content/40" />}
                 </button>
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary w-full" disabled={isSigningUp}>
-              {isSigningUp ? (
-                <>
-                  <Loader2 className="size-5 animate-spin" />
-                  Loading...
-                </>
-              ) : (
-                "Create Account"
-              )}
+            <button
+              type="submit"
+              className={`btn btn-primary w-full ${isSigningUp ? "loading" : ""}`}
+            >
+              Sign Up
             </button>
           </form>
 
-          <div className="text-center">
-            <p className="text-base-content/60">
-              Already have an account?{" "}
-              <Link to="/login" className="link link-primary">
-                Sign in
-              </Link>
-            </p>
-          </div>
+          <p className="text-sm text-center">
+            Already have an account?{" "}
+            <Link to="/login" className="link link-primary">
+              Log in
+            </Link>
+          </p>
         </div>
       </div>
 
-      {/* right side */}
-
-      <AuthImagePattern
-        title="Stay Buzzd, Stay Connected!."
-        subtitle="Buzzd: Spark conversations, build connections, and stay connected in real-time."
-      />
+      
     </div>
   );
 };
+
 export default SignUpPage;

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
-import AuthImagePattern from "../components/AuthImagePattern";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare } from "lucide-react";
+import ParticlesComponent from "./ParticlesComponent"; // Import the Particles component
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,9 +18,11 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="h-screen grid lg:grid-cols-2">
+    <div className="h-screen relative flex">
+      <ParticlesComponent id="tsparticles" /> {/* Add the Particles component here */}
+
       {/* Left Side - Form */}
-      <div className="flex flex-col justify-center items-center p-6 sm:p-12">
+      <div className="flex flex-col justify-center items-center w-full z-10"> {/* Full width and centered */}
         <div className="w-full max-w-md space-y-8">
           {/* Logo */}
           <div className="text-center mb-8">
@@ -101,19 +103,14 @@ const LoginPage = () => {
             <p className="text-base-content/60">
               Don&apos;t have an account?{" "}
               <Link to="/signup" className="link link-primary">
-                Create account
+ Create account
               </Link>
             </p>
           </div>
         </div>
       </div>
-
-      {/* Right Side - Image/Pattern */}
-      <AuthImagePattern
-        title={"Welcome back!"}
-        subtitle={"Sign in to continue your conversations and catch up with your messages."}
-      />
     </div>
   );
 };
+
 export default LoginPage;
