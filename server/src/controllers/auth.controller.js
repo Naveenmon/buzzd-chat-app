@@ -98,7 +98,6 @@ export const updateProfile = async (req, res) => {
 
         const uploadResponse = await cloudinary.uploader.upload(profilePic, {
             folder: "chat",
-            resource_type: "image",
         })
         const updatedUser = await User.findByIdAndUpdate(userId, {profilePic:uploadResponse.secure_url}, { new: true });
 
