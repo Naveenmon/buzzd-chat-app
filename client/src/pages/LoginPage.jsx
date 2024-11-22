@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Link } from "react-router-dom";
-import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare } from "lucide-react";
+import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquareText } from "lucide-react";
 import ParticlesComponent from "./ParticlesComponent"; // Import the Particles component
 
 const LoginPage = () => {
@@ -31,10 +31,10 @@ const LoginPage = () => {
                 className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20
               transition-colors"
               >
-                <MessageSquare className="w-6 h-6 text-primary" />
+                <MessageSquareText className="w-6 h-6 text-primary" />
               </div>
-              <h1 className="text-2xl font-bold mt-2">Welcome Back</h1>
-              <p className="text-base-content/60">Sign in to your account</p>
+              <h1 className="text-2xl font-bold mt-2">Back so soon? We missed you!</h1>
+              <p className="text-base-content/60">Sign in to get the party started! </p>
             </div>
           </div>
 
@@ -101,9 +101,9 @@ const LoginPage = () => {
 
           <div className="text-center">
             <p className="text-base-content/60">
-              Don&apos;t have an account?{" "}
+            No account? No worries,{" "}
               <Link to="/signup" className="link link-primary">
- Create account
+                create one now!
               </Link>
             </p>
           </div>

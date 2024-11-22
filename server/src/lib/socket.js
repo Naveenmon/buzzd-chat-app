@@ -10,10 +10,9 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin:[`${process.env.VITE_FRONTEND_URL}`],
+        origin:["http://localhost:5173"],
     },
 })
-console.log(`"${process.env.VITE_FRONTEND_URL}"`)
 
 
 export function getReceiverSocketId(userId) {

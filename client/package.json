@@ -13,6 +13,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.6.0",
     "axios": "^1.7.7",
+    "chat-app": "file:..",
     "lucide-react": "^0.460.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
