@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from './components/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
@@ -15,8 +14,10 @@ import { Loader } from "lucide-react"
 import { Toaster } from 'react-hot-toast';
 
 export const App = () => {
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
   const { theme } = useThemeStore();
+
+  console.log({ onlineUsers })
 
   useEffect(()=>{
     checkAuth()
